@@ -63,6 +63,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
       children: [
         _buildCover(),
         _buildStatus(),
+        _buildMoreDetails(),
         _buildOverview(),
       ],
     );
@@ -77,6 +78,19 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
         style: Theme.of(context).textTheme.bodyText2,
       ),
     );
+  }
+
+  _buildMoreDetails() {
+    return Container(
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(_controller.movieDetail.genres[0].name),
+            Text('Language: ' +
+                _controller.movieDetail.originalLanguage.toUpperCase()),
+          ],
+        ));
   }
 
   _buildStatus() {
