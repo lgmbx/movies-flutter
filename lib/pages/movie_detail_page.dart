@@ -1,3 +1,4 @@
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 
 import '../controllers/movie_detail_controller.dart';
@@ -107,8 +108,9 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   }
 
   _buildCover() {
-    return Image.network(
-      'https://image.tmdb.org/t/p/w500${_controller.movieDetail.backdropPath}',
+    return FancyShimmerImage(
+      imageUrl:
+          'https://image.tmdb.org/t/p/w500${_controller.movieDetail.backdropPath}',
     );
   }
 }
