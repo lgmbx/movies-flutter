@@ -18,7 +18,6 @@ class _MoviePageState extends State<MoviePage> {
   static const _pageSize = 20;
   final PagingController<int, MovieModel> _pagingController =
       PagingController(firstPageKey: 1);
-
   int lastPage = 1;
 
   @override
@@ -34,6 +33,7 @@ class _MoviePageState extends State<MoviePage> {
 
   Future<void> _fetchPage(int pageKey) async {
     final newItems = await _controller.fetchAllMovies(page: pageKey);
+
     final isLastPage =
         newItems.fold((l) => null, (r) => r.movies.length) < _pageSize;
     if (isLastPage) {
@@ -41,6 +41,7 @@ class _MoviePageState extends State<MoviePage> {
           newItems.fold((error) => null, (movies) => movies.movies));
     } else {
       final nextPageKey = pageKey + 1;
+      print(pageKey);
       _pagingController.appendPage(
           newItems.fold((error) => null, (movies) => movies.movies),
           nextPageKey);
